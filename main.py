@@ -1,6 +1,8 @@
 from graphics import Window
 from maze import Maze
 import sys
+import time
+import random
 
 def main():
     num_rows = 12
@@ -14,7 +16,9 @@ def main():
     sys.setrecursionlimit(10000)
     win = Window(screen_x, screen_y)
 
-    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, 10)
+    seed = random.seed(time.time())
+
+    maze = Maze(margin, margin, num_rows, num_cols, cell_size_x, cell_size_y, win, seed)
     print("Maze Created!")
     is_solvable = maze._solve()
     if not is_solvable:
